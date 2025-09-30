@@ -1,7 +1,7 @@
 /* Define the custom fonts */
 @font-face {
     font-family: 'IRANSansMobileNoEn';
-    src: url('../assets/fonts/UltraLight.ttf') format('truetype');
+    src: url('../assets/fonts/IRANSansMobileNoEn\ UltraLight.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }

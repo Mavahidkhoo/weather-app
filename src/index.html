@@ -2,16 +2,103 @@
 <html lang="en">
 
 <head>
+  <!-- Meta tags for proper character encoding and responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <title>Wheather App</title>
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css"> <!-- Custom styles -->
+  <link rel="stylesheet" href="css/fonts.css"> <!-- Custom fonts -->
+  <link rel="stylesheet" href="css/weather-icons.min.css"> <!-- Weather icon library -->
+  <link rel="stylesheet" href="css/weather-icons-wind.min.css"> <!-- Wind icon library -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+
+  <title>Weather App</title>
 </head>
-<body>
-    <h1>Test Fonts</h1>
+
+<body class="bg-[#0d0c1d] text-white font-sans min-h-screen flex flex-col items-center mb-10">
+
+  <!-- ===== Header ===== -->
+  <header class="w-full max-w-6xl flex justify-between items-center py-6 px-6">
+    <div class="flex items-center gap-2">
+      <!-- Logo circle -->
+      <div class="w-6 h-6 bg-yellow-400 rounded-full"></div>
+      <h1 class="text-lg font-bold">Weather Now</h1>
+    </div>
+    <!-- Unit toggle button -->
+    <button id="unitToggle" class="bg-[#1e1e2f] px-4 py-2 rounded-lg">°C / °F</button>
+  </header>
+
+  <!-- ===== Title Section ===== -->
+  <section class="w-full max-w-6xl px-6 text-center mt-6">
+    <h2 class="text-2xl sm:text-3xl font-semibold">How’s the sky looking today?</h2>
+    <!-- Error/info messages -->
+    <div id="msg" class="text-center text-red-400 hidden"></div>
+  </section>
+
+  <!-- ===== Search Section ===== -->
+  <section class="w-full max-w-3xl mt-6 relative">
+    <div class="flex gap-2">
+      <!-- Search input -->
+      <input id="searchInput" type="text" placeholder="Search for a place..."
+        class="flex-1 bg-white px-4 py-3 rounded-lg text-black outline-none" autocomplete="off" />
+      <!-- Search button -->
+      <button id="searchBtn" class="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg">Search</button>
+    </div>
+    <!-- Suggestions dropdown -->
+    <div id="suggestions" class="hidden"></div>
+  </section>
+
+  <!-- ===== Current Weather Card & Hourly Forecast ===== -->
+  <section class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6 px-6 mt-10">
+
+    <!-- Main weather card -->
+    <div id="mainCard"
+      class="lg:col-span-2 bg-gradient-to-r from-[#4f46e5] to-[#3b82f6] rounded-2xl p-6 flex flex-col justify-center text-center">
+      <h3 id="cityName" class="text-lg font-semibold">City, Country</h3>
+      <p id="date" class="text-sm opacity-80 mt-1">---</p>
+      <p id="currentTemp" class="text-7xl font-bold mt-4">--°</p>
+      <p id="currentCondition" class="mt-2"><i class="wi wi-na text-4xl mr-2"></i> --</p>
+    </div>
+
+    <!-- Hourly forecast container -->
+    <div class="bg-[#1e1e2f] rounded-2xl p-4">
+      <div class="flex justify-between items-center mb-4">
+        <h4 class="font-semibold">Hourly forecast</h4>
+      </div>
+      <div id="hourlyForecast" class="flex flex-col gap-3"></div>
+    </div>
+  </section>
+
+  <!-- ===== Weather Details ===== -->
+  <section class="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-4 gap-4 px-6 mt-8">
+    <div class="bg-[#1e1e2f] rounded-xl p-4 text-center">
+      <p class="opacity-70">Feels Like</p>
+      <p id="feelsLike" class="text-xl font-semibold">--°</p>
+    </div>
+    <div class="bg-[#1e1e2f] rounded-xl p-4 text-center">
+      <p class="opacity-70">Humidity</p>
+      <p id="humidity" class="text-xl font-semibold">--%</p>
+    </div>
+    <div class="bg-[#1e1e2f] rounded-xl p-4 text-center">
+      <p class="opacity-70">Wind</p>
+      <p id="wind" class="text-xl font-semibold">-- km/h</p>
+    </div>
+    <div class="bg-[#1e1e2f] rounded-xl p-4 text-center">
+      <p class="opacity-70">Precipitation</p>
+      <p id="precipitation" class="text-xl font-semibold">-- mm</p>
+    </div>
+  </section>
+
+  <!-- ===== Daily Forecast ===== -->
+  <section class="w-full max-w-6xl px-6 mt-10">
+    <h3 class="text-lg font-semibold mb-4">Daily forecast</h3>
+    <div id="dailyForecast" class="grid grid-cols-2 sm:grid-cols-7 gap-4"></div>
+  </section>
 </body>
+
+<!-- Scripts -->
 <script src="js/tailwind.js"></script>
 <script src="js/tailscript.js"></script>
 <script src="js/script.js"></script>
